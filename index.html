@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Questions and Solutions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        h2 {
+            color: #555;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>All Questions and Solutions</h1>
+        <h2>1. Merge Two Sorted Arrays</h2>
+        <pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+class MergeArray {
+public:
+    vector&lt;int&gt; mergeSortedArrays(vector&lt;int&gt; &A, vector&lt;int&gt; &B) {
+        vector&lt;int&gt; result;
+        int i = 0, j = 0;
+        while (i &lt; A.size() && j &lt; B.size()) {
+            if (A[i] &lt; B[j]) result.push_back(A[i++]);
+            else result.push_back(B[j++]);
+        }
+        while (i &lt; A.size()) result.push_back(A[i++]);
+        while (j &lt; B.size()) result.push_back(B[j++]);
+        return result;
+    }
+};</pre>
+        <h2>2. Maximum Product of Two Elements</h2>
+        <pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+int maxProduct(vector&lt;int&gt; &arr) {
+    sort(arr.begin(), arr.end());
+    int n = arr.size();
+    return arr[n-1] * arr[n-2];
+}</pre>
+        <h2>3. String Compression</h2>
+        <pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+string compressString(string s) {
+    string compressed = "";
+    int count = 1;
+    for (int i = 1; i &lt;= s.length(); i++) {
+        if (i &lt; s.length() && s[i] == s[i - 1]) count++;
+        else {
+            compressed += s[i - 1] + to_string(count);
+            count = 1;
+        }
+    }
+    return compressed.length() &lt; s.length() ? compressed : s;
+}</pre>
+        <h2>4. Geometric Shape Area Calculator</h2>
+        <pre>#include &lt;iostream&gt;
+using namespace std;
+
+class Shape {
+public:
+    virtual float area() = 0;
+};
+
+class Circle : public Shape {
+    float radius;
+public:
+    Circle(float r) : radius(r) {}
+    float area() override { return 3.14 * radius * radius; }
+};
+
+class Rectangle : public Shape {
+    float length, width;
+public:
+    Rectangle(float l, float w) : length(l), width(w) {}
+    float area() override { return length * width; }
+};</pre>
+        <h2>5. Insertion in 2D Array</h2>
+        <pre>#include &lt;iostream&gt;
+using namespace std;
+
+void insertAtPosition(int arr[5][5], int row, int col, int value) {
+    arr[row][col] = value;
+}</pre>
+        <h2>6. Integer to English Word Translator</h2>
+        <pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+vector&lt;string&gt; words = {"Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
+
+string intToWord(int num) {
+    if (num == 0) return "";
+    return intToWord(num / 10) + " " + words[num % 10];
+}</pre>
+        <h2>7. Reverse Words in Sentence</h2>
+        <pre>#include &lt;iostream&gt;
+#include &lt;sstream&gt;
+#include &lt;stack&gt;
+using namespace std;
+
+string reverseWords(string sentence) {
+    stack&lt;string&gt; words;
+    stringstream ss(sentence);
+    string word, result = "";
+    while (ss &gt;&gt; word) words.push(word);
+    while (!words.empty()) {
+        result += words.top() + " ";
+        words.pop();
+    }
+    return result;
+}</pre>
+        <h2>8. Dynamic Array</h2>
+        <pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+int main() {
+    vector&lt;int&gt; studentIDs;
+    studentIDs.push_back(101); // Example of adding IDs dynamically.
+    return 0;
+}</pre>
+        <h2>9. Prime Factorization and Inheritance</h2>
+        <pre>#include &lt;iostream&gt;
+using namespace std;
+
+class A { protected: int funcA(int x) { return x * 2; }};
+class B { protected: int funcB(int x) { return x * 3; }};
+class C { protected: int funcC(int x) { return x * 5; }};
+
+class D : public A, public B, public C {
+    int val;
+public:
+    D() : val(1) {}
+    void update_val(int new_val) {
+        while (new_val % 2 == 0) { val = funcA(val); new_val /= 2; }
+        while (new_val % 3 == 0) { val = funcB(val); new_val /= 3; }
+        while (new_val % 5 == 0) { val = funcC(val); new_val /= 5; }
+    }
+};</pre>
+        <h2>10. Dimension and Volume Analysis</h2>
+        <pre>#include &lt;iostream&gt;
+using namespace std;
+
+class Box {
+    int length, breadth, height;
+public:
+    Box() : length(0), breadth(0), height(0) {}
+    Box(int l, int b, int h) : length(l), breadth(b), height(h) {}
+    Box(const Box &box) : length(box.length), breadth(box.breadth), height(box.height) {}
+};</pre>
+        <h2>11. Spiral Traversal of a 2D Matrix</h2>
+        <pre>#include &lt;iostream&gt;
+using namespace std;
+
+void spiralTraversal(int matrix[4][4], int rows, int cols) {
+    int top = 0, bottom = rows - 1, left = 0, right = cols - 1;
+    while (top &lt;= bottom && left &lt;= right) {
+        for (int i = left; i &lt;= right; i++) cout &lt;&lt; matrix[top][i] &lt;&lt; " ";
+        top++;
+        for (int i = top; i &lt;= bottom; i++) cout &lt;&lt; matrix[i][right] &lt;&lt; " ";
+        right--;
+        if (top &lt;= bottom) {
+            for (int i = right; i &gt;= left; i--) cout &lt;&lt; matrix[bottom][i] &lt;&lt; " ";
+            bottom--;
+        }
+        if (left &lt;= right) {
+            for (int i = bottom; i &gt;= top; i--) cout &lt;&lt; matrix[i][left] &lt;&lt; " ";
+            left++;
+        }
+    }
+}</pre>
+        <h2>12. Next Greater Element for Each Array Element</h2>
+        <pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;stack&gt;
+using namespace std;
+
+vector&lt;int&gt; nextGreaterElement(vector&lt;int&gt; &arr) {
+    vector&lt;int&gt; result(arr.size(), -1);
+    stack&lt;int&gt; s;
+    for (int i = 0; i &lt; arr.size(); i++) {
+        while (!s.empty() && arr[s.top()] &lt; arr[i]) {
+            result[s.top()] = arr[i];
+            s.pop();
+        }
+        s.push(i);
+    }
+    return result;
+}</pre>
+        <h2>13. Top Three Performers</h2>
+        <pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
+using namespace std;
+
+void topThreePerformers(vector&lt;int&gt; &marks) {
+    sort(marks.rbegin(), marks.rend());
+    cout &lt;&lt; "Top 3 Performers: " &lt;&lt; marks[0] &lt;&lt; ", " &lt;&lt; marks[1] &lt;&lt; ", " &lt;&lt; marks[2] &lt;&lt; endl;
+}</pre>
+        <h2>14. Frequency Analysis for a Survey</h2>
+        <pre>#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+void frequencyAnalysis(vector&lt;int&gt; &ratings) {
+    int freq[6] = {0}; // Ratings range from 1 to 5.
+    for (int r : ratings) freq[r]++;
+    for (int i = 1; i &lt;= 5; i++) cout &lt;&lt; "Rating " &lt;&lt; i &lt;&lt; ": " &lt;&lt; freq[i] &lt;&lt; " times" &lt;&lt; endl;
+}
+</pre>
+    </div>
+</body>
+</html>
